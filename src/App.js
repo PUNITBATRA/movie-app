@@ -39,6 +39,8 @@ function App() {
     <>
       <form onSubmit={onSubmitHandler}>
         <header>
+          <h1 className="heading">Movie-App</h1>
+
           <input
             className="search"
             type="search"
@@ -58,12 +60,16 @@ function App() {
             />
           ))}
       </div>
-      {selectedMovie && (
-        <Modal
-          selectedMovie={selectedMovie}
-          setSelectedMovie={setSelectedMovie}
-        />
-      )}
+      {selectedMovie &&
+        movies.length > 0 &&
+        movies.map((movie) => (
+          <Modal
+            key={movie.id}
+            {...movie}
+            selectedMovie={selectedMovie}
+            setSelectedMovie={setSelectedMovie}
+          />
+        ))}
     </>
   );
 }

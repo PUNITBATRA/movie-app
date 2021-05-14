@@ -31,6 +31,7 @@ header {
   padding: 1rem;
   display: flex;
   justify-content: flex-end;
+  justify-content: space-between;
 }
 .search {
   font-family: inherit;
@@ -130,4 +131,8 @@ header {
   margin: 60px auto;
   box-shadow: 3px 5px 7px rgba(0, 0, 0, 0.5);
   border: 3px solid white;
+}
+
+header h1 {
+  margin-top: 12px;
 }
