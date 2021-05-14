@@ -6,9 +6,24 @@ const setVote = (vote) => {
   else if (vote >= 6) return "orange";
   else return "red";
 };
-const Movie = ({ title, poster_path, overview, vote_average }) => {
+const Movie = ({
+  title,
+  poster_path,
+  overview,
+  vote_average,
+  setSelectedMovie,
+}) => {
   return (
-    <div className="movie">
+    <div
+      className="movie"
+      onClick={() => {
+        setSelectedMovie(
+          poster_path
+            ? ImgAPI + poster_path
+            : "https://images.unsplash.com/photo-1533488765986-dfa2a9939acd?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80"
+        );
+      }}
+    >
       <img
         src={
           poster_path

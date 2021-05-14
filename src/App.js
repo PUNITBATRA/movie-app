@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Movie from "./components/Movie";
-
+import Modal from "./components/Modal";
 function App() {
   const FeaturedAPI =
     "https://api.themoviedb.org/3/discover/movie?api_key=67cd73109cef2157b09faa2fd7a187d3&language=en-US&sort_by=popularity.desc&page=2";
@@ -10,7 +10,7 @@ function App() {
 
   const [movies, setMovies] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-
+  const [selectedMovie, setSelectedMovie] = useState(null);
   useEffect(() => {
     getMovies(FeaturedAPI);
   }, []);
@@ -50,8 +50,20 @@ function App() {
       </form>
       <div className="movie-container">
         {movies.length > 0 &&
-          movies.map((movie) => <Movie key={movie.id} {...movie} />)}
+          movies.map((movie) => (
+            <Movie
+              key={movie.id}
+              {...movie}
+              setSelectedMovie={setSelectedMovie}
+            />
+          ))}
       </div>
+      {selectedMovie && (
+        <Modal
+          selectedMovie={selectedMovie}
+          setSelectedMovie={setSelectedMovie}
+        />
+      )}
     </>
   );
 }
