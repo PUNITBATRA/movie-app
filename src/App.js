@@ -30,6 +30,9 @@ function App() {
       getMovies(SearchAPI + searchTerm);
       setSearchTerm("");
     }
+    else{
+    return "No Movies Found for the given search."
+    }
   };
   const handleChange = (e) => {
     setSearchTerm(e.target.value);
